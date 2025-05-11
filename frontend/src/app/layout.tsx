@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@fontsource/noto-sans-jp/400.css";
+import "@fontsource/noto-sans-jp/700.css";
+import ThemeClientProvider from "./theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body>
+        <ThemeClientProvider>
+          {children}
+        </ThemeClientProvider>
+      </body>
     </html>
   );
 }

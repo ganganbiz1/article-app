@@ -30,22 +30,22 @@ export default function ArticleDetailPage() {
   }
 
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Card>
+    <Box sx={{ minHeight: "100vh", background: "linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%)", py: 8 }}>
+      <Container maxWidth="sm">
+        <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
           <CardContent>
-            <Typography variant="h4" component="h1" gutterBottom>
+            <Typography variant="h4" component="h1" fontWeight={700} gutterBottom align="center">
               {article.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {article.created_at}
+            <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 2 }}>
+              {new Date(article.created_at).toLocaleString("ja-JP", { dateStyle: "medium", timeStyle: "short" })}
             </Typography>
-            <Typography variant="body1" mt={2}>
+            <Typography variant="body1" color="text.primary" sx={{ whiteSpace: "pre-line", fontSize: 18, lineHeight: 1.8 }}>
               {article.content}
             </Typography>
           </CardContent>
         </Card>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 } 
