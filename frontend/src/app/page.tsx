@@ -43,8 +43,10 @@ export default function Home() {
           {articles.map((article) => (
             <Card key={article.id} sx={{ transition: "0.2s", '&:hover': { boxShadow: 8, transform: 'translateY(-4px) scale(1.01)' }, borderRadius: 3 }}>
               <CardContent>
-                <Typography variant="h5" component={Link} href={`/articles/${article.id}`} color="primary" fontWeight={700} sx={{ textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
-                  {article.title}
+                <Typography variant="h5" fontWeight={700} sx={{ textDecoration: "none", '&:hover': { textDecoration: "underline" } }}>
+                  <Link href={`/articles/${article.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                    {article.title}
+                  </Link>
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
                   {new Date(article.created_at).toLocaleString("ja-JP", { dateStyle: "medium", timeStyle: "short" })}

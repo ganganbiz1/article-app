@@ -26,7 +26,19 @@ export default function ArticleDetailPage() {
   }, [id]);
 
   if (!article) {
-    return <Typography>Loading...</Typography>;
+    return (
+      <Box sx={{ minHeight: "100vh", background: "linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%)", py: 8 }}>
+        <Container maxWidth="sm">
+          <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
+            <CardContent>
+              <Typography variant="h5" sx={{ textAlign: "center", color: "text.secondary" }}>
+                Loading...
+              </Typography>
+            </CardContent>
+          </Card>
+        </Container>
+      </Box>
+    );
   }
 
   return (
@@ -34,13 +46,13 @@ export default function ArticleDetailPage() {
       <Container maxWidth="sm">
         <Card sx={{ borderRadius: 4, boxShadow: 6 }}>
           <CardContent>
-            <Typography variant="h4" component="h1" fontWeight={700} gutterBottom align="center">
+            <Typography variant="h4" component="h1" fontWeight={700} gutterBottom sx={{ textAlign: "center" }}>
               {article.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 2 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2, textAlign: "center" }}>
               {new Date(article.created_at).toLocaleString("ja-JP", { dateStyle: "medium", timeStyle: "short" })}
             </Typography>
-            <Typography variant="body1" color="text.primary" sx={{ whiteSpace: "pre-line", fontSize: 18, lineHeight: 1.8 }}>
+            <Typography variant="body1" color="text.primary" sx={{ whiteSpace: "pre-line", fontSize: 18, lineHeight: 1.8, overflowWrap: "break-word" }}>
               {article.content}
             </Typography>
           </CardContent>
